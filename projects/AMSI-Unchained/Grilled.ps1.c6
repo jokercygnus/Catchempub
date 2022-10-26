@@ -1,0 +1,2 @@
+$Uninitialize = $object.GetMethods("NonPublic,static") | Where-Object Name -eq Uninitialize
+$Uninitialize.Invoke($object,$null)
